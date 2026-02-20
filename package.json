@@ -1,0 +1,32 @@
+{
+  "name": "dental-growth-os",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dental Growth OS - Production-ready monorepo",
+  "scripts": {
+    "dev": "pnpm build:shared && turbo run dev",
+    "dev:light": "pnpm build:shared && turbo run dev --filter=@dental-growth-os/dashboard --filter=@dental-growth-os/api",
+    "start": "turbo run start --filter=@dental-growth-os/dashboard --filter=@dental-growth-os/api",
+    "build": "turbo run build",
+    "build:shared": "cd packages/shared && pnpm build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "db:migrate": "cd services/api && pnpm prisma migrate dev",
+    "db:studio": "cd services/api && pnpm prisma studio",
+    "db:generate": "cd services/api && pnpm prisma generate",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^1.10.0",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3",
+    "turbo": "^1.10.0",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.10.0"
+}
